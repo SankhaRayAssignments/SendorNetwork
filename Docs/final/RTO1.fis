@@ -1,0 +1,57 @@
+[System]
+Name='RTO1'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='deadline_delay'
+Range=[0 1.5]
+NumMFs=5
+MF1='too_low':'trimf',[0 0.15 0.3]
+MF2='low':'trimf',[0.3 0.45 0.6]
+MF3='normal':'trimf',[0.6 0.75 0.9]
+MF4='high':'trimf',[0.9 1.05 1.2]
+MF5='too_high':'trimf',[1.2 1.35 1.5]
+
+[Input2]
+Name='buffer_fullness'
+Range=[0 1]
+NumMFs=3
+MF1='high':'trimf',[0 0.15 0.33]
+MF2='normal':'trimf',[0.33 0.5 0.66]
+MF3='low':'trimf',[0.66 0.82 1]
+
+[Output1]
+Name='Retransmission'
+Range=[0 5]
+NumMFs=5
+MF1='too_low':'trimf',[0 0.5 1]
+MF2='low':'trimf',[1 1.5 2]
+MF3='normal':'trimf',[2 2.5 3]
+MF4='high':'trimf',[3 3.5 4]
+MF5='too_high':'trimf',[4 4.5 5]
+
+[Rules]
+1 1, 3 (1) : 1
+1 2, 5 (1) : 1
+1 3, 5 (1) : 1
+2 1, 3 (1) : 1
+2 2, 4 (1) : 1
+2 3, 4 (1) : 1
+3 1, 2 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
+4 1, 1 (1) : 1
+4 2, 2 (1) : 1
+4 3, 2 (1) : 1
+5 1, 1 (1) : 1
+5 2, 1 (1) : 1
+5 3, 1 (1) : 1

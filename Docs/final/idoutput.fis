@@ -1,0 +1,54 @@
+[System]
+Name='idoutput'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='x'
+Range=[0 1]
+NumMFs=4
+MF1='empty':'trimf',[0 0.1 0.2]
+MF2='medium':'trimf',[0.2 0.35 0.5]
+MF3='full':'trimf',[0.5 0.65 0.8]
+MF4='veryfull':'trimf',[0.8 0.9 1]
+
+[Input2]
+Name='y'
+Range=[0 1]
+NumMFs=4
+MF1='empty':'trimf',[0 0.1 0.2]
+MF2='medium':'trimf',[0.2 0.35 0.5]
+MF3='full':'trimf',[0.5 0.65 0.8]
+MF4='veryfull':'trimf',[0.8 0.9 1]
+
+[Output1]
+Name='id'
+Range=[0 1]
+NumMFs=5
+MF1='verylarge':'constant',[0]
+MF2='large':'constant',[0.25]
+MF3='intermediate':'constant',[0.5]
+MF4='small':'constant',[0.75]
+MF5='verysmall':'constant',[1]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 1 (1) : 1
+4 1, 2 (1) : 1
+1 2, 1 (1) : 1
+2 2, 3 (1) : 1
+3 2, 4 (1) : 1
+4 2, 5 (1) : 1
+1 3, 1 (1) : 1
+2 3, 4 (1) : 1
+3 3, 5 (1) : 1
+4 3, 5 (1) : 1
